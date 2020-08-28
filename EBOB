@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ən_böyük_ortaq_bölən
+{
+    class Program
+    {
+        static int EBOB(int a, int b)
+        {
+            while (b != 0)
+            {
+                var t = b;
+                b = a % b;
+                a = t;
+            }
+            return a;
+        }
+
+        static void Main(string[] args)
+        {
+            int a; int b; 
+        link3:
+            Console.WriteLine("EBOB");
+        link1:
+            Console.Write("A = ");            
+            bool success = Int32.TryParse(Console.ReadLine(), out a);
+            if (success)
+            {
+                Console.WriteLine(a);
+            }
+            else
+            {
+                Console.WriteLine("parametr yalnış daxil edilib!"); goto link1;
+            }
+            link2:
+            Console.Write("B = ");
+            bool success2= Int32.TryParse(Console.ReadLine(), out b);
+            if (success2)
+            {
+                Console.WriteLine(b);
+            }
+            else
+            {
+                Console.WriteLine("parametr yalnış daxil edilib!"); goto link2;
+            }
+            Console.WriteLine("{0} ve {1} ededlerinin EBOB-u {2}-dir", a, b, EBOB(a, b));
+            int repeat;
+            Console.WriteLine("Yeniden yoxlamaq isteyirsiniz? (Bəli uchun 1 daxil edin)");
+            repeat = Convert.ToInt32(Console.ReadLine());
+            if (repeat == 1) { goto link3; }
+            else { Console.WriteLine("Proqram sona chatdi"); }
+            
+           
+
+        }
+    }
+}
